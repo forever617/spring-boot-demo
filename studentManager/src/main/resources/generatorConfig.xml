@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+        <!--去掉注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--需要配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/study?characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root"
+                        password="wang1378">
+        </jdbcConnection>
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--指定entity生成的位置-->
+        <javaModelGenerator targetPackage="com.leo.studentManager.entity" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--sql映射文件生成的位置 mapper.xml-->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--指定DaoMapper生成的位置 mapper.java-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.leo.studentManager.dao" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--table是指定每个表的生成策略-->
+<!--            <table tableName="t_student" domainObjectName="Student"></table>-->
+<!--        <table tableName="city" domainObjectName="City"></table>-->
+<!--        <table tableName="county" domainObjectName="County"></table>-->
+<!--        <table tableName="province" domainObjectName="Province"></table>-->
+<!--        <table tableName="t_achievement" domainObjectName="Achievement"></table>-->
+<!--        <table tableName="t_grade" domainObjectName="Grade"></table>-->
+<!--        <table tableName="t_student" domainObjectName="Student"></table>-->
+<!--        <table tableName="t_exam" domainObjectName="Exam"></table>-->
+<!--        <table tableName="t_school" domainObjectName="School"></table>-->
+        <table tableName="t_teacher" domainObjectName="Teacher"></table>
+<!--        <table tableName="t_subject" domainObjectName="Subject"></table>-->
+<!--        <table tableName="t_user" domainObjectName="User"></table>-->
+                <table tableName="t_class" domainObjectName="TClass"></table>
+    </context>
+</generatorConfiguration>

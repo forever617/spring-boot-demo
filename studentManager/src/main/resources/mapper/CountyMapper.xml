@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leo.studentManager.dao.CountyMapper" >
+  <resultMap id="BaseResultMap" type="com.leo.studentManager.entity.County" >
+    <id column="_id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="county_id" property="countyId" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from county
+    where _id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.studentManager.entity.County" >
+    insert into county (_id, name, county_id, 
+      city_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{countyId,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.leo.studentManager.entity.County" >
+    update county
+    set name = #{name,jdbcType=VARCHAR},
+      county_id = #{countyId,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR}
+    where _id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select _id, name, county_id, city_id
+    from county
+    where _id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select _id, name, county_id, city_id
+    from county
+  </select>
+</mapper>

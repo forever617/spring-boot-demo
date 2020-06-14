@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leo.studentManager.dao.TeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.leo.studentManager.entity.Teacher" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+    <result column="desc_" property="desc" jdbcType="VARCHAR" />
+    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
+    <result column="sub_subjects" property="subSubjects" jdbcType="VARCHAR" />
+    <result column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="school_id" property="schoolId" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="start_teach" property="startTeach" jdbcType="TIMESTAMP" />
+    <result column="is_retire" property="isRetire" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_teacher
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.studentManager.entity.Teacher" >
+    insert into t_teacher (id, teacher_name, desc_, 
+      subject_id, sub_subjects, position_id, 
+      school_id, sex, age, 
+      start_teach, is_retire, class_id, 
+      head_img)
+    values (#{id,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
+      #{subjectId,jdbcType=INTEGER}, #{subSubjects,jdbcType=VARCHAR}, #{positionId,jdbcType=INTEGER}, 
+      #{schoolId,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, 
+      #{startTeach,jdbcType=TIMESTAMP}, #{isRetire,jdbcType=INTEGER}, #{classId,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.leo.studentManager.entity.Teacher" >
+    update t_teacher
+    set teacher_name = #{teacherName,jdbcType=VARCHAR},
+      desc_ = #{desc,jdbcType=VARCHAR},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      sub_subjects = #{subSubjects,jdbcType=VARCHAR},
+      position_id = #{positionId,jdbcType=INTEGER},
+      school_id = #{schoolId,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      start_teach = #{startTeach,jdbcType=TIMESTAMP},
+      is_retire = #{isRetire,jdbcType=INTEGER},
+      class_id = #{classId,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, teacher_name, desc_, subject_id, sub_subjects, position_id, school_id, 
+    sex, age, start_teach, is_retire, class_id, head_img
+    from t_teacher
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, teacher_name, desc_, subject_id, sub_subjects, position_id, school_id, 
+    sex, age, start_teach, is_retire, class_id, head_img
+    from t_teacher
+  </select>
+</mapper>

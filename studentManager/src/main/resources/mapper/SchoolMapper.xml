@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leo.studentManager.dao.SchoolMapper" >
+  <resultMap id="BaseResultMap" type="com.leo.studentManager.entity.School" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id int" property="cityIdInt" jdbcType="INTEGER" />
+    <result column="county_id" property="countyId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="range" property="range" jdbcType="INTEGER" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="master_id" property="masterId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_school
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.studentManager.entity.School" >
+    insert into t_school (id, province_id, "city_id int", 
+      county_id, name, address, 
+      range, desc, master_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, #{cityIdInt,jdbcType=INTEGER}, 
+      #{countyId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{range,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR}, #{masterId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.leo.studentManager.entity.School" >
+    update t_school
+    set province_id = #{provinceId,jdbcType=INTEGER},
+      "city_id int" = #{cityIdInt,jdbcType=INTEGER},
+      county_id = #{countyId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      range = #{range,jdbcType=INTEGER},
+      desc = #{desc,jdbcType=VARCHAR},
+      master_id = #{masterId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, province_id, "city_id int", county_id, name, address, range, desc, master_id
+    from t_school
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, province_id, "city_id int", county_id, name, address, range, desc, master_id
+    from t_school
+  </select>
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leo.studentManager.dao.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.leo.studentManager.entity.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="s_des" property="sDes" jdbcType="VARCHAR" />
+    <result column="father" property="father" jdbcType="VARCHAR" />
+    <result column="mother" property="mother" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="born_date" property="bornDate" jdbcType="TIMESTAMP" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="registered_residence" property="registeredResidence" jdbcType="VARCHAR" />
+    <result column="motto" property="motto" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="school_id" property="schoolId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.leo.studentManager.entity.Student" >
+    insert into t_student (id, name, class_id, 
+      s_des, father, mother, 
+      address, phone, born_date, 
+      sex, idcard, nation, native_place, 
+      registered_residence, motto, user_id, 
+      school_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
+      #{sDes,jdbcType=VARCHAR}, #{father,jdbcType=VARCHAR}, #{mother,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{bornDate,jdbcType=TIMESTAMP}, 
+      #{sex,jdbcType=CHAR}, #{idcard,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{registeredResidence,jdbcType=VARCHAR}, #{motto,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{schoolId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.leo.studentManager.entity.Student" >
+    update t_student
+    set name = #{name,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      s_des = #{sDes,jdbcType=VARCHAR},
+      father = #{father,jdbcType=VARCHAR},
+      mother = #{mother,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      born_date = #{bornDate,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=CHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      registered_residence = #{registeredResidence,jdbcType=VARCHAR},
+      motto = #{motto,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      school_id = #{schoolId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, name, class_id, s_des, father, mother, address, phone, born_date, sex, 
+    idcard, nation, native_place, registered_residence, motto, user_id, school_id
+    from t_student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, class_id, s_des, father, mother, address, phone, born_date, sex, 
+    idcard, nation, native_place, registered_residence, motto, user_id, school_id
+    from t_student
+  </select>
+</mapper>
